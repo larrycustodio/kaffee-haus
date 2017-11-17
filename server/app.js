@@ -1,5 +1,12 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const mongoose =require('mongoose');
+
+mongoose.connect('mongodb://localhost/kaffee-haus', {useMongoClient:true});
+mongoose.Promise = Promise;
+
+app.use(bodyParser.json());
 
 app.get('/', (req,res)=>{
     res.send('hello express');
