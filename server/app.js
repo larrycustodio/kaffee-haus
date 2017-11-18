@@ -6,10 +6,12 @@ const mongoose =require('mongoose');
 mongoose.connect('mongodb://localhost/kaffee-haus', {useMongoClient:true});
 mongoose.Promise = Promise;
 
+app.use(express.static('dist'));
+app.use(express.static('public'));
 app.use(bodyParser.json());
 
 app.get('/', (req,res)=>{
-    res.send('hello express');
+    res.send(index.html);
 })
 
 app.use('/api/products', require('./routes/products'));
